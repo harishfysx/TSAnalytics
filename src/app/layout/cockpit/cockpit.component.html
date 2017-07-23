@@ -1,3 +1,12 @@
-<p>
-  cockpit works!
-</p>
+<div class="row">
+    <div class="col-md-12">
+        <app-search></app-search>
+    </div>
+    <hr />
+</div>
+<div class="row">
+    <div class="col-md-12">
+    <app-result
+    *ngIf="searchedResult"></app-result>
+    </div>
+</div>
