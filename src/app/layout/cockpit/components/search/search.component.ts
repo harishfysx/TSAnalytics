@@ -14,7 +14,11 @@ export class SearchComponent implements OnInit {
   }
     onAddStudent() {
       // console.log('student hall ticket number :' + this.hallTicketNoInput.nativeElement.value);
-        this.resultService.getStudent(this.hallTicketNoInput.nativeElement.value);
+        this.resultService.getStudent(this.hallTicketNoInput.nativeElement.value).subscribe((resp: any) => {
+            console.log(resp);
+        }, (error) => {
+            console.log(error)
+        })
     }
 
 }
