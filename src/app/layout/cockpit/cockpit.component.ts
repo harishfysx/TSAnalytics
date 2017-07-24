@@ -8,12 +8,13 @@ import {Result} from '../../shared/models/result.model';
     styleUrls: ['./cockpit.component.scss']
 })
 export class CockpitComponent implements OnInit {
-    searchedResult: Result;
+    searchedResult: any;
 
     constructor( private resultService: ResultService ) { }
 
     ngOnInit() {
-       this.resultService.studentSearched.subscribe((result: Result) => {
+       this.resultService.studentSearched.subscribe((result: any) => {
+           console.log('from cockpit',result)
            this.searchedResult = result;
        })
     }

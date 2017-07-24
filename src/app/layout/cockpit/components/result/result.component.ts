@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Result} from '../../../../shared/models/result.model';
 
 @Component({
@@ -8,7 +8,7 @@ import {Result} from '../../../../shared/models/result.model';
 })
 export class ResultComponent implements OnInit {
      //result : Result;
-     result = new Result('Harish','A',500);
+    @Input() result: any;
     test = 'Test';
 
   constructor() { }
