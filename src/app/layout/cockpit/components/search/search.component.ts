@@ -11,7 +11,9 @@ export class SearchComponent implements OnInit {
   constructor(private resultService: ResultService) { }
 
   ngOnInit() {
+      this.hallTicketNoInput.nativeElement.value= 1730110391
   }
+
     onAddStudent() {
       // console.log('student hall ticket number :' + this.hallTicketNoInput.nativeElement.value);
         this.resultService.getStudent(this.hallTicketNoInput.nativeElement.value).subscribe((resp: any) => {

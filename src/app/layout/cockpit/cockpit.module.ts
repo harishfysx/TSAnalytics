@@ -13,7 +13,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-      CockpitRoutingModule
+      CockpitRoutingModule,
   ],
   declarations: [CockpitComponent, SearchComponent, ResultComponent]
 })
