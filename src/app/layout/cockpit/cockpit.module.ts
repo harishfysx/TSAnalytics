@@ -5,6 +5,7 @@ import {CockpitRoutingModule} from './cockpit.routing.module';
 import {Routes} from '@angular/router';
 import { SearchComponent } from './components/search/search.component';
 import { ResultComponent } from './components/result/result.component';
+import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 
 const routes: Routes = [
     { path: '', component: CockpitComponent }
@@ -14,6 +15,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
       CockpitRoutingModule,
+      NgxDatatableModule
   ],
   declarations: [CockpitComponent, SearchComponent, ResultComponent]
 })
