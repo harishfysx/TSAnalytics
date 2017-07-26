@@ -9,15 +9,26 @@ import {ResultService} from '../../../../shared/services/result.service';
     styleUrls: ['./result.component.scss']
 })
 export class ResultComponent implements OnInit {
+
     @Input() rows = [];
 
-    constructor(private resultService: ResultService) {}
+
+
+    constructor(private resultService: ResultService) {
+    }
 
     ngOnInit(): void {
         this.resultService.getStudents().subscribe((result: any) => {
-
-            console.log('result object',  result);
-             // this.rows = result;
+            this.fetch((data) => {
+                this.rows = data;
+            })
         })
     }
+
+    fetch(cb) {
+        this.resultService.getStudents().subscribe((result: any) => {
+            cb(JSON.parse(result._body))
+        });
+    }
+
 }

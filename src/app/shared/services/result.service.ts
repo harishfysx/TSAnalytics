@@ -32,11 +32,8 @@ export class ResultService {
     }
 
     getStudents() {
-        return this.http.get('https://harish-udemy.firebaseio.com/data.json').map((response: Response) => {
-            const data = response.json();
-            return data;  // map wraps data autmotically into observale but not catch method below
-        }).catch ((error: Response) => {
-            return Observable.throw('Something went wrong');
+        return this.http.get('http://192.168.0.60:3000/api/student/sampleStudents').catch ((error: Response) => {
+            return Observable.throw('Something went wrong')
         });
     }
 
