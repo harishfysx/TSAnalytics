@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Result} from '../../../../shared/models/result.model';
+import {ResultService} from '../../../../shared/services/result.service';
 
 
 @Component({
@@ -7,29 +8,16 @@ import {Result} from '../../../../shared/models/result.model';
     templateUrl: './result.component.html',
     styleUrls: ['./result.component.scss']
 })
-export class ResultComponent {
+export class ResultComponent implements OnInit {
+    @Input() rows = [];
 
+    constructor(private resultService: ResultService) {}
 
-    rows = [];
+    ngOnInit(): void {
+        this.resultService.getStudents().subscribe((result: any) => {
 
-
-
-    constructor() {
-        this.fetch((data) => {
-            this.rows = data;
-        });
+            console.log('result object',  result);
+             // this.rows = result;
+        })
     }
-
-    fetch(cb) {
-        const req = new XMLHttpRequest();
-        req.open('GET', `assets/data/students.json`);
-
-        req.onload = () => {
-            const data = JSON.parse(req.response);
-            cb(data);
-        };
-
-        req.send();
-    }
-
 }

@@ -8,10 +8,26 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <button class="btn btn-success" type="button" (click)="onAddStudent()">Add</button>
-                            <button class="btn btn-danger" type="button">Delete</button>
+                            <button class="btn btn-success " type="button" (click)="onGetStudent()">Get Student</button>
                         </div>
                     </div>
                 </form>
+        <div class="col col-xl-6 col-lg-12" *ngIf="student && !showInvalidMessage">
+
+            <div class="card mb-3">
+                <div class="card-header">
+                    {{student.ticket}}
+                    <button class="btn btn-primary btn-sm pull-right" type="button" (click)="onAddStudent()">Add Student</button>
+                </div>
+                <div class="card-block table-responsive">
+                <p>
+                    Name: {{student.stdntname}}
+                </p>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="showInvalidMessage">
+            <p style="color: crimson"> Please check the hall ticket number and try again</p>
+        </div>
     </div>
 </div>

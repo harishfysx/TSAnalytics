@@ -16,18 +16,26 @@ export class ResultService {
 
 
     getStudent(hallTicket: number) {
-        console.log('get Result for ' + hallTicket);
-        // this.http.get('http://192.168.0.60:3000/api/student/students'+hallTicket,)
-
-         // const headers = new Headers({'Access-Control-Allow-Origin': '*'});
+        // console.log('get Result for ' + hallTicket);
         const url = `${this.studentsUrl}/${hallTicket}`;
-        // const url = `https://harish-udemy.firebaseio.com/AppName.json`;
-
         return this.http.get(url).map((response: Response) => {
             this.studentSearched.emit(response.json());
             return response.json();  // map wraps data autmotically into observale but not catch method below
         }).catch ((error: Response) => {
             console.log(error)
+            return Observable.throw('Something went wrong');
+        });
+    }
+
+    addStudentToFireBase(student: any) {
+        return this.http.post('https://harish-udemy.firebaseio.com/data.json', student);
+    }
+
+    getStudents() {
+        return this.http.get('https://harish-udemy.firebaseio.com/data.json').map((response: Response) => {
+            const data = response.json();
+            return data;  // map wraps data autmotically into observale but not catch method below
+        }).catch ((error: Response) => {
             return Observable.throw('Something went wrong');
         });
     }

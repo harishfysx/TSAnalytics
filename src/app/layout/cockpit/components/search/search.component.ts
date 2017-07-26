@@ -8,19 +8,35 @@ import {ResultService} from '../../../../shared/services/result.service';
 })
 export class SearchComponent implements OnInit {
     @ViewChild('hallTicketNoInput') hallTicketNoInput: ElementRef;
+    // student = 'test';
+    student: any;
+    showInvalidMessage = false;
+
   constructor(private resultService: ResultService) { }
 
   ngOnInit() {
-      this.hallTicketNoInput.nativeElement.value= 1730110391
+      this.hallTicketNoInput.nativeElement.value = 1730110391;
   }
 
-    onAddStudent() {
+    onGetStudent() {
       // console.log('student hall ticket number :' + this.hallTicketNoInput.nativeElement.value);
+
         this.resultService.getStudent(this.hallTicketNoInput.nativeElement.value).subscribe((resp: any) => {
             console.log(resp);
+            this.student = resp.student;
+            this.showInvalidMessage = false;
         }, (error) => {
-            console.log(error)
+            console.log(error);
+            this.showInvalidMessage = true;
         })
+    }
+
+    onAddStudent() {
+    this.resultService.addStudentToFireBase(this.student).subscribe((resp) => {
+        console.log(resp);
+    }, (error) => {
+        console.log(error)
+    });
     }
 
 }
