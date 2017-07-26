@@ -5,23 +5,11 @@
         [rows]="rows"
         [columnMode]="'force'"
         [headerHeight]="50"
+        [sortType]= "'multi'"
         [footerHeight]="50"
         [rowHeight]="'auto'"
-        [limit]="10">
-        <ngx-datatable-column name="Name" width="80">
-            <ng-template let-row="row" ngx-datatable-cell-template>
-                <strong>{{row.ticket}}</strong>
-            </ng-template>
-        </ngx-datatable-column>
-        <ngx-datatable-column name="Name" width="80">
-            <ng-template let-row="row" ngx-datatable-cell-template>
-                <strong>{{row.stdntname}}</strong>
-            </ng-template>
-        </ngx-datatable-column>
-        <ngx-datatable-column name="Total" width="80">
-            <ng-template let-row="row" ngx-datatable-cell-template>
-                <strong>{{row.grandtotal}}</strong>
-            </ng-template>
-        </ngx-datatable-column>
+        [limit]="10"
+    [columns]="[{name: 'ticket'},{name: 'stdntname'},{name: 'grandtotal'}]">
+
     </ngx-datatable>
 </div>
