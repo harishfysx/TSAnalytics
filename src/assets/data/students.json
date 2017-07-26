@@ -1,0 +1,113 @@
+[{
+    "student": {
+        "_id": "596976dd65a6204c2a9c122b",
+        "ticket": 1730110391,
+        "district": "ADILABAD",
+        "stdntname": "MADAVI GANESH",
+        "grandtotal": "126",
+        "grandresult": "FAIL",
+        "addflag": "9",
+        "link": "999999999",
+        "__v": 0,
+        "subjects": [{
+            "subjectName": "ENGLISH PAPER -I",
+            "marksGained": "17",
+            "passType": "",
+            "outcome": "F",
+            "_id": "596976dd65a6204c2a9c1231"
+        },
+            {
+                "subjectName": "TELUGU PAPER-I",
+                "marksGained": "56",
+                "passType": "*",
+                "outcome": "P",
+                "_id": "596976dd65a6204c2a9c1230"
+            },
+            {
+                "subjectName": "ECONOMICS PAPER-I",
+                "marksGained": "36",
+                "passType": "*",
+                "outcome": "P",
+                "_id": "596976dd65a6204c2a9c122f"
+            },
+            {
+                "subjectName": "COMMERCE PAPER-I",
+                "marksGained": "12",
+                "passType": "",
+                "outcome": "F",
+                "_id": "596976dd65a6204c2a9c122e"
+            },
+            {
+                "subjectName": "CIVICS PAPER-I",
+                "marksGained": "05",
+                "passType": "",
+                "outcome": "F",
+                "_id": "596976dd65a6204c2a9c122d"
+            },
+            {
+                "subjectName": "--",
+                "marksGained": "---",
+                "passType": "-",
+                "outcome": "-",
+                "_id": "596976dd65a6204c2a9c122c"
+            }
+        ]
+    }
+},
+    {
+        "student": {
+            "_id": "596976dd65a6204c2a9c122b",
+            "ticket": 1730110391,
+            "district": "ADILABAD",
+            "stdntname": "MADAVI GANESH",
+            "grandtotal": "126",
+            "grandresult": "FAIL",
+            "addflag": "9",
+            "link": "999999999",
+            "__v": 0,
+            "subjects": [{
+                "subjectName": "ENGLISH PAPER -I",
+                "marksGained": "17",
+                "passType": "",
+                "outcome": "F",
+                "_id": "596976dd65a6204c2a9c1231"
+            },
+                {
+                    "subjectName": "TELUGU PAPER-I",
+                    "marksGained": "56",
+                    "passType": "*",
+                    "outcome": "P",
+                    "_id": "596976dd65a6204c2a9c1230"
+                },
+                {
+                    "subjectName": "ECONOMICS PAPER-I",
+                    "marksGained": "36",
+                    "passType": "*",
+                    "outcome": "P",
+                    "_id": "596976dd65a6204c2a9c122f"
+                },
+                {
+                    "subjectName": "COMMERCE PAPER-I",
+                    "marksGained": "12",
+                    "passType": "",
+                    "outcome": "F",
+                    "_id": "596976dd65a6204c2a9c122e"
+                },
+                {
+                    "subjectName": "CIVICS PAPER-I",
+                    "marksGained": "05",
+                    "passType": "",
+                    "outcome": "F",
+                    "_id": "596976dd65a6204c2a9c122d"
+                },
+                {
+                    "subjectName": "--",
+                    "marksGained": "---",
+                    "passType": "-",
+                    "outcome": "-",
+                    "_id": "596976dd65a6204c2a9c122c"
+                }
+            ]
+        }
+    }
+]

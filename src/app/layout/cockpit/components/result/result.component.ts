@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {Result} from '../../../../shared/models/result.model';
 
+
 @Component({
     selector: 'app-result',
     templateUrl: './result.component.html',
@@ -8,7 +9,10 @@ import {Result} from '../../../../shared/models/result.model';
 })
 export class ResultComponent {
 
+
     rows = [];
+
+
 
     constructor() {
         this.fetch((data) => {
@@ -18,10 +22,11 @@ export class ResultComponent {
 
     fetch(cb) {
         const req = new XMLHttpRequest();
-        req.open('GET', `assets/data/company.json`);
+        req.open('GET', `assets/data/students.json`);
 
         req.onload = () => {
-            cb(JSON.parse(req.response));
+            const data = JSON.parse(req.response);
+            cb(data);
         };
 
         req.send();
