@@ -1,5 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ResultService} from '../../../../shared/services/result.service';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-search',
@@ -9,18 +10,19 @@ import {ResultService} from '../../../../shared/services/result.service';
 export class SearchComponent implements OnInit {
     @ViewChild('hallTicketNoInput') hallTicketNoInput: ElementRef;
     // student = 'test';
+    @ViewChild('f') hallTicketForm: NgForm;
     student: any;
     showInvalidMessage = false;
 
   constructor(private resultService: ResultService) { }
 
   ngOnInit() {
-      this.hallTicketNoInput.nativeElement.value = 1730110391;
+      // this.hallTicketNoInput.nativeElement.value = 1730110391;
   }
 
     onGetStudent() {
       // console.log('student hall ticket number :' + this.hallTicketNoInput.nativeElement.value);
-
+        // this.hallTicketForm.value.
         this.resultService.getStudent(this.hallTicketNoInput.nativeElement.value).subscribe((resp: any) => {
             console.log(resp);
             this.student = resp.student;
