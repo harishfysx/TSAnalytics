@@ -1,31 +1,59 @@
-<div class="row">
+<div class="row" xmlns="http://www.w3.org/1999/html">
     <div class="text-xs-center col-md-12">
-         <form role="form">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group has-success">
-                                <input type="text" class="form-control form-control-success" id="hallTicketNoInput" #hallTicketNoInput>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <button class="btn btn-success " type="button" (click)="onGetStudent()">Get Student</button>
-                        </div>
-                    </div>
-                </form>
-        <div class="col col-xl-6 col-lg-12" *ngIf="student && !showInvalidMessage">
 
-            <div class="card mb-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for..." id="hallTicketNoInput" #hallTicketNoInput>
+                        <span class="input-group-btn">
+        <button class="btn btn-success" type="button" (click)="onGetStudent()">Search</button>
+      </span>
+                    </div>
+                </div>
+            </div>
+
+
+            <br>
+
+            <div class="card mb-3" *ngIf="student && !showInvalidMessage">
                 <div class="card-header">
                     {{student.ticket}}
                     <button class="btn btn-primary btn-sm pull-right" type="button" (click)="onAddStudent()">Add Student</button>
                 </div>
                 <div class="card-block table-responsive">
-                <p>
-                    Name: {{student.stdntname}}
-                </p>
+
+                    <div class="row align-items-start">
+                        <div class="col">
+                            <p>
+                                <strong>Name:</strong> {{student.stdntname}}
+                            </p>
+                            <p>
+                             <strong>Grand Total:</strong>    {{student.grandtotal}}
+                            </p>
+                            <p>
+                                <strong> Result:</strong> {{student.grandresult}}
+                            </p>
+                        </div>
+                        <div class="col" >
+                            <div *ngFor="let subject of student.subjects; let i=index">
+                                <ng-template [ngIf]="i<3">
+                                    <p ><strong>{{subject.subjectName}}:</strong> {{subject.marksGained}} </p>
+                                </ng-template>
+
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div *ngFor="let subject of student.subjects; let i=index">
+                                <ng-template [ngIf]="i>3">
+                                    <p ><strong>{{subject.subjectName}}:</strong> {{subject.marksGained}} </p>
+                                </ng-template>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+
         <div *ngIf="showInvalidMessage">
             <p style="color: crimson"> Please check the hall ticket number and try again</p>
         </div>
