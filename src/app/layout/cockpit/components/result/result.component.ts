@@ -11,6 +11,7 @@ import {ResultService} from '../../../../shared/services/result.service';
 export class ResultComponent implements OnInit {
 
      rows = [];
+
     constructor(private resultService: ResultService) {
         this.fetch((data) => {
             this.rows = data;

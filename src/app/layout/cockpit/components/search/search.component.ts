@@ -17,7 +17,23 @@ export class SearchComponent implements OnInit {
   constructor(private resultService: ResultService) { }
 
   ngOnInit() {
-      // this.hallTicketNoInput.nativeElement.value = 1730110391;
+       this.hallTicketNoInput.nativeElement.value = 1730110496;
+  }
+
+  getBadgeCss(passType: string, outCome: string) {
+      let cssClasses;
+      if (outCome === 'P') {
+          cssClasses = {
+              'badge' : true,
+              'badge-info': true
+          }
+      } else if (outCome === 'F' ) {
+          cssClasses = {
+              'badge' : true,
+              'badge-danger': true
+          }
+      }
+      return cssClasses;
   }
 
     onGetStudent() {

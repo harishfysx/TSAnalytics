@@ -9,14 +9,17 @@
         [footerHeight]="50"
         [rowHeight]="'auto'"
         [limit]="10"
+        [columns]="[{name: 'Hall Ticket' , prop: 'ticket'},
+        {name: 'Name', prop: 'stdntname'},
+        {name: 'Total', prop: 'grandtotal'},
+        {name: 'Result', prop: 'grandresult'}
 
-        <!--[columns]="[{name: 'Hall Ticket' , prop: 'ticket'},-->
-        <!--{name: 'Name', prop: 'stdntname'},-->
-        <!--{name: 'Total', prop: 'grandtotal'},-->
-        <!--{name: 'Result', prop: 'grandresult'},-->
-        <!--{name: 'Subject', prop: 'subjects[0].subjectName'}-->
-        <!--]"-->
-    >
+        ]">
+
+
+
+
+
 
 
     </ngx-datatable>

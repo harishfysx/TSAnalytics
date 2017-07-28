@@ -8,7 +8,7 @@
                     <div class="input-group">
                         <input type="text"
                                class="form-control"
-                               placeholder="Enter Hall Ticket Number Here"
+                               placeholder="1730110496"
                                id="hallTicketNoInput"
                                ngModel
                                name="hallTicketNoInput"
@@ -52,15 +52,15 @@
                     <div class="col" >
                         <div *ngFor="let subject of student.subjects; let i=index">
                             <ng-template [ngIf]="i<3">
-                                <p ><strong>{{subject.subjectName}}:</strong> {{subject.marksGained}} </p>
+                                <p><strong>{{subject.subjectName}}:</strong>   {{subject.marksGained}}&nbsp;<span [ngClass]="getBadgeCss(subject.passType,subject.outcome)" >{{subject.passType}}{{subject.outcome}}</span> </p>
                             </ng-template>
 
                         </div>
                     </div>
                     <div class="col">
                         <div *ngFor="let subject of student.subjects; let i=index">
-                            <ng-template [ngIf]="i>3">
-                                <p ><strong>{{subject.subjectName}}:</strong> {{subject.marksGained}} </p>
+                            <ng-template [ngIf]="i>=3">
+                                <p><strong>{{subject.subjectName}}:</strong>   {{subject.marksGained}}&nbsp;<span [ngClass]="getBadgeCss(subject.passType,subject.outcome)" >{{subject.passType}}{{subject.outcome}}</span> </p>
                             </ng-template>
 
                         </div>
