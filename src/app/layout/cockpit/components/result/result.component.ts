@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {Result} from '../../../../shared/models/result.model';
 import {ResultService} from '../../../../shared/services/result.service';
 
@@ -6,11 +6,14 @@ import {ResultService} from '../../../../shared/services/result.service';
 @Component({
     selector: 'app-result',
     templateUrl: './result.component.html',
-    styleUrls: ['./result.component.scss']
+    styleUrls: ['./result.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class ResultComponent implements OnInit {
-
+    @ViewChild('students') table: any;
      rows = [];
+    expanded: any = {};
+     timeout: any;
 
     constructor(private resultService: ResultService) {
         this.fetch((data) => {
@@ -26,10 +29,26 @@ export class ResultComponent implements OnInit {
         })
     }
 
+    onPage(event) {
+        clearTimeout(this.timeout);
+        this.timeout = setTimeout(() => {
+            console.log('paged!', event);
+        }, 100);
+    }
+
     fetch(cb) {
         this.resultService.getStudents().subscribe((result: any) => {
             cb(JSON.parse(result._body))
         });
+    }
+
+    toggleExpandRow(row) {
+        console.log('Toggled Expand Row!', row);
+        this.table.rowDetail.toggleExpandRow(row);
+    }
+
+    onDetailToggle(event) {
+        console.log('Detail Toggled', event);
     }
 
 }

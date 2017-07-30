@@ -1,0 +1,25 @@
+[
+    {
+        "hallTicket": 0,
+        "studentName": "Ramsey Cummings",
+        "grandTotal": 400,
+        "grandresult": "A",
+        "english-I": {
+            "marks": 45,
+            "passType": "*",
+            "outcome": "P",
+            "Abscent": false,
+            "NotRegistered": false
+        }
+    },
+    {
+        "id": 1,
+        "name": "Stefanie Huff",
+        "gender": "female",
+        "age": 70,
+        "address": {
+            "state": "Arizona",
+            "city": "Beaverdale"
+        }
+    }
+]
