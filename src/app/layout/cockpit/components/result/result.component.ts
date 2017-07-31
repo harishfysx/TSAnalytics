@@ -51,4 +51,20 @@ export class ResultComponent implements OnInit {
         console.log('Detail Toggled', event);
     }
 
+    getBadgeCss(passType: string, outCome: string) {
+        let cssClasses;
+        if (outCome === 'P') {
+            cssClasses = {
+                'badge' : true,
+                'badge-info': true
+            }
+        } else if (outCome === 'F' ) {
+            cssClasses = {
+                'badge' : true,
+                'badge-danger': true
+            }
+        }
+        return cssClasses;
+    }
+
 }
