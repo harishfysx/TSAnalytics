@@ -12,14 +12,13 @@ export class ResultService {
     private studentsUrl = 'http://192.168.0.60:3000/api/student/students';  // URL to web api
     studentSearched = new EventEmitter<any>();
     constructor(private http: Http) {}
-
-
+    newStudentAddedEvent = new EventEmitter<boolean>();
 
     getStudent(hallTicket: number) {
         // console.log('get Result for ' + hallTicket);
         const url = `${this.studentsUrl}/${hallTicket}`;
         return this.http.get(url).map((response: Response) => {
-            this.studentSearched.emit(response.json());
+            // this.studentSearched.emit(response.json());
             return response.json();  // map wraps data autmotically into observale but not catch method below
         }).catch ((error: Response) => {
             console.log(error)
@@ -27,12 +26,22 @@ export class ResultService {
         });
     }
 
-    addStudentToFireBase(student: any) {
-        return this.http.post('https://harish-udemy.firebaseio.com/data.json', student);
+    addStudent(student: any) {
+        // console.log(student);
+        return this.http.post('http://192.168.0.60:3000/api/college/student', {'student': student})
+            .map((response: Response) => {
+                return response.json();
+            }).catch ((error: Response) => {
+                 const errorObj = error.json();
+                if (errorObj.message === '11000') {
+                    return Observable.throw('11000');
+                }
+                 Observable.throw('Something went wrong');
+            });
     }
 
     getStudents() {
-        return this.http.get('http://192.168.0.60:3000/api/student/sampleStudents').catch ((error: Response) => {
+        return this.http.get('http://192.168.0.60:3000/api/college/sampleStudents').catch ((error: Response) => {
             return Observable.throw('Something went wrong')
         });
     }

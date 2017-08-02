@@ -29,11 +29,14 @@
 
 
         <br>
+        <div *ngIf="showDuplicateStudent" class="pull-right">
+            <p style="color: crimson"> Student already added to the table.!</p>
+        </div>
 
-        <div class="card mb-3" *ngIf="student && !showInvalidMessage">
+        <div class="card mb-3" *ngIf="student && !showInvalidMessage" style="clear: both">
             <div class="card-header">
                 {{student.ticket}}
-                <button class="btn btn-primary btn-sm pull-right" type="button" (click)="onAddStudent()">Add Student</button>
+                <button class="btn btn-primary btn-sm pull-right" type="button" (click)="onAddStudent(student)">Add Student</button>
             </div>
             <div class="card-block table-responsive">
 
@@ -72,5 +75,6 @@
         <div *ngIf="showInvalidMessage">
             <p style="color: crimson"> Please check the hall ticket number and try again</p>
         </div>
+
     </div>
 </div>

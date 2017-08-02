@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ResultService} from '../../../../shared/services/result.service';
 import {NgForm} from '@angular/forms';
+import {Response} from '@angular/http';
 
 @Component({
   selector: 'app-search',
@@ -13,6 +14,7 @@ export class SearchComponent implements OnInit {
     @ViewChild('f') hallTicketForm: NgForm;
     student: any;
     showInvalidMessage = false;
+    showDuplicateStudent = false;
 
   constructor(private resultService: ResultService) { }
 
@@ -39,8 +41,9 @@ export class SearchComponent implements OnInit {
     onGetStudent() {
       // console.log('student hall ticket number :' + this.hallTicketNoInput.nativeElement.value);
         // this.hallTicketForm.value.
+        this.showDuplicateStudent = false;
         this.resultService.getStudent(this.hallTicketNoInput.nativeElement.value).subscribe((resp: any) => {
-            console.log(resp);
+            // console.log(resp);
             this.student = resp.student;
             this.showInvalidMessage = false;
         }, (error) => {
@@ -49,12 +52,16 @@ export class SearchComponent implements OnInit {
         })
     }
 
-    onAddStudent() {
-    this.resultService.addStudentToFireBase(this.student).subscribe((resp) => {
-        console.log(resp);
-    }, (error) => {
-        console.log(error)
-    });
+    onAddStudent(student: any) {
+        this.resultService.addStudent(student).subscribe((resp: Response) => {
+            // console.log('response', resp);
+            this.showDuplicateStudent = false;
+            this.resultService.newStudentAddedEvent.emit(true);
+        }, (error) => {
+            console.log('error', error);
+            if (error === '11000') {
+                this.showDuplicateStudent = true;
+            }
+        });
     }
-
 }
