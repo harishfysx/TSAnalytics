@@ -19,7 +19,7 @@ export class ResultComponent implements OnInit {
     }
 
     loadStudentClient() {
-        this.resultService.getStudentPromise().then((result: any) => {
+        this.resultService.getStudentsPromise().then((result: any) => {
             // console.log(result)
             this.rows = result;
         });
@@ -47,6 +47,14 @@ export class ResultComponent implements OnInit {
 
     onDetailToggle(event) {
         // console.log('Detail Toggled', event);
+    }
+    //
+    onDelStudent(id: string) {
+        console.log('to be deleted' + id);
+        this.resultService.deleteStudent(id).then((response) => {
+            console.log(response);
+            this.loadStudentClient();
+        })
     }
 
     getBadgeCss(passType: string, outCome: string) {

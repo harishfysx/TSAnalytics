@@ -71,6 +71,14 @@
                 <strong>{{value}}</strong>
             </ng-template>
         </ngx-datatable-column>
+        <ngx-datatable-column  name="Delete" prop="_id" width="80">
+            <ng-template let-value="value" ngx-datatable-cell-template>
+                <button type="button" class="btn btn-danger"
+                (click)="onDelStudent(value)">
+                    Delete
+                </button>
+            </ng-template>
+        </ngx-datatable-column>
 
     </ngx-datatable>
 </div>

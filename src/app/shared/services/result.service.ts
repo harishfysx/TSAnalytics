@@ -8,8 +8,6 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class ResultService {
-    private result: Result = new Result('SOwji', 'A+', 800);
-    private studentFromClient: StudentModel;
     private studentsUrl = 'http://192.168.0.60:3000/api/student/students';  // URL to web api
     studentSearched = new EventEmitter<any>();
     constructor(private http: Http) {}
@@ -40,17 +38,21 @@ export class ResultService {
                  Observable.throw('Something went wrong');
             });
     }
-
-    getStudents() {
-        return this.http.get('http://192.168.0.60:3000/api/student/sampleStudents').catch((error: Response) => {
-            return Observable.throw('Something went wrong')
-        });
-    }
     //
-    getStudentPromise(): Promise<any[]> {
+    getStudentsPromise(): Promise<any[]> {
         return this.http.get('http://192.168.0.60:3000/api/college/sampleStudents')
             .toPromise()
             .then(response => response.json() as any[])
+            .catch(this.handleError);
+    }
+
+    deleteStudent(id: string): Promise<void> {
+        const url = `${'http://192.168.0.60:3000/api/college/student'}/${id}`;
+        return this.http.delete(url)
+            .toPromise()
+            .then((response: Response) => {
+                return response.json()
+            })
             .catch(this.handleError);
     }
 
