@@ -16,16 +16,20 @@ export class ResultComponent implements OnInit {
      timeout: any;
 
     constructor(private resultService: ResultService) {
-        this.fetch((data) => {
-            this.rows = data;
-        })
     }
 
+    loadStudentClient() {
+        this.resultService.getStudentPromise().then((result: any) => {
+            // console.log(result)
+            this.rows = result;
+        });
+    }
     ngOnInit(): void {
-        this.resultService.getStudents().subscribe((result: any) => {
-            this.fetch((data) => {
-                this.rows = data;
-            })
+        this.loadStudentClient();
+        this.resultService.newStudentAddedEvent.subscribe((addedStudent: boolean) =>{
+            if (addedStudent) {
+                this.loadStudentClient();
+            }
         })
     }
 
@@ -34,12 +38,6 @@ export class ResultComponent implements OnInit {
         this.timeout = setTimeout(() => {
             console.log('paged!', event);
         }, 100);
-    }
-
-    fetch(cb) {
-        this.resultService.getStudents().subscribe((result: any) => {
-            cb(JSON.parse(result._body))
-        });
     }
 
     toggleExpandRow(row) {

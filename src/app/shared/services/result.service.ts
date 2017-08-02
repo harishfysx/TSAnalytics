@@ -4,6 +4,7 @@ import {Headers, Http, Response} from '@angular/http';
 import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
 import {StudentModel} from '../models/student.model';
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class ResultService {
@@ -41,11 +42,22 @@ export class ResultService {
     }
 
     getStudents() {
-        return this.http.get('http://192.168.0.60:3000/api/college/sampleStudents').catch ((error: Response) => {
+        return this.http.get('http://192.168.0.60:3000/api/student/sampleStudents').catch((error: Response) => {
             return Observable.throw('Something went wrong')
         });
     }
+    //
+    getStudentPromise(): Promise<any[]> {
+        return this.http.get('http://192.168.0.60:3000/api/college/sampleStudents')
+            .toPromise()
+            .then(response => response.json() as any[])
+            .catch(this.handleError);
+    }
 
+    private handleError(error: any): Promise<any> {
+        console.error('An error occurred', error); // for demo purposes only
+        return Promise.reject(error.message || error);
+    }
 
 
 }
